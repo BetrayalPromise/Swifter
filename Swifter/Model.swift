@@ -21,8 +21,8 @@ struct Student: Codable {
 
     private enum CodingKeys: String, CodingKey {
         case name = "name"
-        case age
-        case weight
+        case age = "age"
+        case weight = "weight"
         case schools = "school"
     }
 

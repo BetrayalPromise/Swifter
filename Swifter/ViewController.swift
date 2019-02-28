@@ -12,42 +12,33 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.white
+//        let hash: Dictionary<String, Any> = Dictionary<String, Any>()
+//        print(hash.find(by: "String"))
         
-        buildUserInterface()
+        let v: UIView = UIView()
+        self.view.addSubview(v)
+        v.backgroundColor = .red
+        v.translatesAutoresizingMaskIntoConstraints = false
         
-        guard let path: String = Bundle.main.path(forResource: "data", ofType: "json") else {
-            return 
-        }
-        guard let loaclData: Data = NSData(contentsOfFile: path) as Data? else {
-            return
-        }
-        
-        do {
-            let students: Student = try JSONDecoder().decode(Student.self, from: loaclData)
-            print(students)
-        } catch {
-            return
-        }
-        
-        guard let uiImage: UIImage = UIImage(named: "image") else {
-            return
-        }
-        guard let cgImage: CGImage = uiImage.asCG() else {
-            return
-        }
-        guard let ciImage: CIImage = uiImage.asCI() else {
-            return
-        }
-        print(uiImage)
-        print(cgImage)
-        print(ciImage)
+        (v.left == self.view.left).isActive = true
+        (v.bottom == self.view.bottom).isActive = true
+        (v.right == self.view.right).isActive = true
+        (v.top == self.view.top).isActive = true
     }
-    
-    public func buildUserInterface() {
-        view.backgroundColor = UIColor.white
-        aop(with: {
-            print("A")
-        })
-    }
+}
 
+
+extension UINavigationBar {
+    /// 控制导航栏1px线是否显示
+    public func controlLine(with isHidden: Bool) {
+        for v in self.subviews {
+            for vv in v.subviews {
+                if vv.isKind(of: UIImageView.self) && vv.frame.size.height == 0.5 {
+                    vv.isHidden = isHidden
+                    break
+                }
+            }
+        }
+    }
 }
