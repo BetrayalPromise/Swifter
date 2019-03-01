@@ -21,10 +21,13 @@ class ViewController: UIViewController {
         v.backgroundColor = .red
         v.translatesAutoresizingMaskIntoConstraints = false
         
-        (v.left == self.view.left).isActive = true
-        (v.bottom == self.view.bottom).isActive = true
-        (v.right == self.view.right).isActive = true
-        (v.top == self.view.top).isActive = true
+//        (v.top == self.view.layoutGuide.top).isActive = true
+        (self.view.layoutGuide.left == v.left).isActive = true
+//        (v.bottom == self.view.layoutGuide.bottom).isActive = true
+        (self.view.layoutGuide.right == v.right).isActive = true
+        
+        (self.topLayoutGuide.bottom == v.top).isActive = true
+        (self.bottomLayoutGuide.top == v.bottom).isActive = true
     }
 }
 
