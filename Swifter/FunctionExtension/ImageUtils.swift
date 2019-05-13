@@ -1,11 +1,3 @@
-//
-//  ImageUtils.swift
-//  Swifter
-//
-//  Created by Chunyang Li 李春阳 on 2019/1/10.
-//  Copyright © 2019 Chunyang Li 李春阳. All rights reserved.
-//
-
 import Foundation
 import CoreMedia
 import UIKit

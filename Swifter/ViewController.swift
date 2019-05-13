@@ -15,19 +15,6 @@ class ViewController: UIViewController {
         self.view.backgroundColor = UIColor.white
 //        let hash: Dictionary<String, Any> = Dictionary<String, Any>()
 //        print(hash.find(by: "String"))
-        
-        let v: UIView = UIView()
-        self.view.addSubview(v)
-        v.backgroundColor = .red
-        v.translatesAutoresizingMaskIntoConstraints = false
-        
-//        (v.top == self.view.layoutGuide.top).isActive = true
-        (self.view.layoutGuide.left == v.left).isActive = true
-//        (v.bottom == self.view.layoutGuide.bottom).isActive = true
-        (self.view.layoutGuide.right == v.right).isActive = true
-        
-        (self.topLayoutGuide.bottom == v.top).isActive = true
-        (self.bottomLayoutGuide.top == v.bottom).isActive = true
     }
 }
 

@@ -1,36 +1,28 @@
-//
-//  NameSpace.swift
-//  Swifter
-//
-//  Created by Chunyang Li 李春阳 on 2019/1/14.
-//  Copyright © 2019 Chunyang Li 李春阳. All rights reserved.
-//
-
 import Foundation
 
+// #MARK: - C命名空间处理 -
 /// 需要实现的协议
-public protocol NameSpaceWrappable {
-    associatedtype WrapperType
-    var ns: WrapperType { get }
+public protocol CWrappable {
+    associatedtype CWrapperType
+    var c: CWrapperType { get }
+    //    static var C: CWrapperType.Type { get }
 }
 
-public extension NameSpaceWrappable {
-    var ns: NameSpaceWrapper<Self> {
-        return NameSpaceWrapper(value: self)
-    }
+public extension CWrappable {
+    var c: CWrapper<Self> { return CWrapper(value: self) }
+    //    static var C: CWrapper<Self>.Type { return CWrapper.self }
 }
 
 /// 需要扩展的协议
-public protocol TypeWrapperProtocol {
-    associatedtype WrappedType
-    var wrappedValue: WrappedType { get }
-    init(value: WrappedType)
+public protocol CWrapperConvertible {
+    associatedtype CWrappedType
+    var wrappedValue: CWrappedType { get }
+    init(value: CWrappedType)
 }
 
-/// 包裹体
-public struct NameSpaceWrapper<T>: TypeWrapperProtocol {
-    public let wrappedValue: T
-    public init(value: T) {
-        self.wrappedValue = value
-    }
+public struct CWrapper<T>: CWrapperConvertible {
+    public var wrappedValue: T
+    public init(value: T) { self.wrappedValue = value }
 }
+
+// #MARK: -
