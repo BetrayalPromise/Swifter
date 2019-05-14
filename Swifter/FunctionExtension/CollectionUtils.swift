@@ -58,12 +58,12 @@ public extension Dictionary {
             for (key, value) in self {
                 body += "&\(key)=\(value)"
             }
-            #if swift(>=4.0)
+#if swift(>=4.0)
             return String(body[body.startIndex..<body.index(body.startIndex, offsetBy: 1)])
-            #elseif swift(>=3.0)
+#elseif swift(>=3.0)
             let index: String.Index = body.index(body.startIndex, offsetBy: 1)
             return body.substring(from: index)
-            #endif
+#endif
         }
     }
 
@@ -81,5 +81,32 @@ public extension Array {
     func find(at index: Int) -> Element? {
         if self.count <= index { return nil }
         return self[index]
+    }
+}
+
+public extension Collection {
+    subscript(safe index: Index) -> Iterator.Element? {
+        return indices.contains(index) ? self[index] : nil
+    }
+}
+
+public extension Dictionary {
+    func exist(by key: Key) -> Bool {
+        return index(forKey: key) != nil
+    }
+    
+    /// 满足过滤条件的项目数量
+    ///
+    /// - Parameter condition: 顾虑条件
+    /// - Returns: 满足条件的项
+    /// - Throws: 可能会抛出异常
+    func count(where condition: @escaping ((key: Key, value: Value)) throws -> Bool) rethrows -> Int {
+        var count: Int = 0
+        try self.forEach {
+            if try condition($0) {
+                count += 1
+            }
+        }
+        return count
     }
 }

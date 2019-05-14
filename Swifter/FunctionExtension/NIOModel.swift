@@ -1,13 +1,36 @@
 import Foundation
 import UIKit
 
+// MARK: 模型转Data
+public func toData<T>(by model: T) -> Data? where T: Encodable {
+    var data: Data?
+    do {
+        data = try JSONEncoder().encode(model)
+    } catch {
+        return nil
+    }
+    return data
+}
+
+// MARK: 模型转JSON字符串
+public func toString<T>(by model: T) -> String? where T: Encodable {
+    return toData(by: model)?.toString()
+}
+
+// MARK: 模型转JSON对象
+public func toObject<T>(by model: T) -> Any? where T: Encodable {
+    return toData(by: model)?.toObject()
+}
+
 public extension Dictionary {
-    /// json字符串转Model
+    // MARK: JSON对象转Model
     func toModel<T>(type: T.Type) -> T? where T: Decodable {
         return self.toData()?.toModel(type: type)
     }
-
+    
+    // MARK: JSON对象转Data
     func toData() -> Data? {
+        if !JSONSerialization.isValidJSONObject(self) { return nil }
         var data: Data? = nil
         do {
             data = try JSONSerialization.data(withJSONObject: self, options: JSONSerialization.WritingOptions.prettyPrinted)
@@ -16,18 +39,20 @@ public extension Dictionary {
         }
         return data
     }
-
+    
+    // MARK: JSON对象转JSON字符串
     func toString() -> String? {
         return self.toData()?.toString()
     }
 }
 
 public extension String {
+    // MARK: JSON字符串转Data
     func toData() -> Data? {
         return self.data(using: String.Encoding.utf8)
     }
-
-    /// json字符串转Model
+    
+    // MARK: JSON字符串转Model
     func toModel<T>(type: T.Type) -> T? where T: Decodable {
         guard let data: Data = self.data(using: String.Encoding.utf8) else { return nil }
         var model: T?
@@ -38,9 +63,9 @@ public extension String {
         }
         return model
     }
-
-    /// json字符串转json数据
-    func toJSONObject() -> Any? {
+    
+    // MARK: JSON字符串转JSON对象
+    func toObject() -> Any? {
         guard let data: Data = self.data(using: String.Encoding.utf8) else { return nil }
         if JSONSerialization.isValidJSONObject(data) { return nil }
         var jsonObject: Any?
@@ -53,9 +78,8 @@ public extension String {
     }
 }
 
-
 public extension Data {
-    /// json二进制数据串转Model
+    // MARK: JSON二进制转Model
     func toModel<T>(type: T.Type) -> T? where T: Decodable {
         var model: T?
         do {
@@ -66,10 +90,9 @@ public extension Data {
         }
         return model
     }
-
-    /// json二进制数据转json数据
-    func toJSONObject() -> Any? {
-        if JSONSerialization.isValidJSONObject(self) { return nil }
+    
+    // MARK: JSON二进制转JSON对象
+    func toObject() -> Any? {
         var jsonObject: Any?
         do {
             jsonObject = try JSONSerialization.jsonObject(with: self, options: JSONSerialization.ReadingOptions.mutableContainers)
@@ -78,8 +101,10 @@ public extension Data {
         }
         return jsonObject
     }
-
+    
+    // MARK: JSON二进制转JSON字符串
     func toString() -> String? {
         return String(data: self, encoding: String.Encoding.utf8)
     }
 }
+

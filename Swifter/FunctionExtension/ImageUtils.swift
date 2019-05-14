@@ -62,9 +62,8 @@ extension CIImage: ImageConvertible {
 
 
 /// 修正方向
-extension UIImage {
-    
-    public func fixDirection() -> UIImage? {
+public extension UIImage {
+    func fixDirection() -> UIImage? {
         if self.imageOrientation == .up {
             return self
         }
@@ -116,7 +115,7 @@ extension UIImage {
         return UIImage(cgImage: cgimg)
     }
     
-    public var normal: UIImage {
+    var normal: UIImage {
         get {
             if imageOrientation == .up {
                 return self
