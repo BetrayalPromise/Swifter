@@ -15,6 +15,11 @@ class ViewController: UIViewController {
         self.view.backgroundColor = UIColor.white
 //        let hash: Dictionary<String, Any> = Dictionary<String, Any>()
 //        print(hash.find(by: "String"))
+        UnsafePointer<Int8>.init(bitPattern: 8)
+        print("C".c.utf8())
+        print("base".base64.encoded())
+        let value: String? = nil
+        value?.base64.encoded()
     }
 }
 

@@ -11,7 +11,6 @@ public protocol ImageConvertible {
 
 @available(iOS 6.0, *)
 extension UIImage: ImageConvertible {
-    
     public func asUI() -> UIImage? {
         return self
     }
@@ -23,12 +22,10 @@ extension UIImage: ImageConvertible {
     public func asCI() -> CIImage? {
         return CIImage(image: self)
     }
-    
 }
 
 @available(iOS 6.0, *)
 extension CGImage: ImageConvertible {
-    
     public func asUI() -> UIImage? {
         return UIImage(cgImage: self)
     }
@@ -40,12 +37,10 @@ extension CGImage: ImageConvertible {
     public func asCI() -> CIImage? {
         return CIImage(cgImage: self)
     }
-    
 }
 
 @available(iOS 6.0, *)
 extension CIImage: ImageConvertible {
-    
     public func asUI() -> UIImage? {
         return UIImage(ciImage: self)
     }
@@ -57,7 +52,6 @@ extension CIImage: ImageConvertible {
     public func asCI() -> CIImage? {
         return self
     }
-    
 }
 
 

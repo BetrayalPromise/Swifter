@@ -1,8 +1,8 @@
 import Foundation
 
-extension Character {
-    
-    public var isEmoji: Bool {
+public extension Character {
+    /// 是否为表情
+    var isEmoji: Bool {
         // http://stackoverflow.com/questions/30757193/find-out-if-character-in-string-is-emoji
         let scalarValue = String(self).unicodeScalars.first!.value
         switch scalarValue {
@@ -21,5 +21,11 @@ extension Character {
             return false
         }
     }
-    
+
+    static func * (lhs: Character, rhs: Int) -> String {
+        guard rhs > 0 else {
+            return ""
+        }
+        return String(repeating: String(lhs), count: rhs)
+    }
 }

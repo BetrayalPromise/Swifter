@@ -61,8 +61,7 @@ public extension Dictionary {
 #if swift(>=4.0)
             return String(body[body.startIndex..<body.index(body.startIndex, offsetBy: 1)])
 #elseif swift(>=3.0)
-            let index: String.Index = body.index(body.startIndex, offsetBy: 1)
-            return body.substring(from: index)
+            return body.substring(from: body.index(body.startIndex, offsetBy: 1))
 #endif
         }
     }
