@@ -346,3 +346,16 @@ public extension DispatchQueue {
         return DispatchQueue(label: label, qos: qos, attributes: DispatchQueue.Attributes.concurrent, autoreleaseFrequency: autoreleaseFrequency, target: target)
     }
 }
+
+extension DispatchQueue {
+    private static var onceContent = [String]()
+    public class func once(token: String, block: () -> Void) {
+        objc_sync_enter(self)
+        defer {
+            objc_sync_exit(self)
+        }
+        if onceContent.contains(token) { return }
+        onceContent.append(token)
+        block()
+    }
+}

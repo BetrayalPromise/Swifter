@@ -22,11 +22,10 @@ class ViewController: UIViewController {
 //        let hash: Dictionary<String, Any> = Dictionary<String, Any>()
 //        print(hash.find(by: "String"))
         UnsafePointer<Int8>.init(bitPattern: 8)
-        print("C".c.utf8())
-        print("base".base64.encoded())
+        print("C".c.utf8() ?? "")
+        print("base".base64.encoded() ?? "")
         let value: String? = nil
-        value?.base64.encoded()
-        
+        print(value?.base64.encoded() ?? "")
         delegate.sync(queue: DispatchQueue(label: "com.nio.queue")) { (p) in
             p.execute()
         }

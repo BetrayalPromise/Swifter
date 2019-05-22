@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		6F8106AA2271C4F800AB9B01 /* ControllerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8106A92271C4F800AB9B01 /* ControllerUtils.swift */; };
 		6F8106AE2289958100AB9B01 /* FileExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8106AC2289958100AB9B01 /* FileExtension.swift */; };
+		6F8106D022957E8C00AB9B01 /* ScreenUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8106CF22957E8C00AB9B01 /* ScreenUtils.swift */; };
+		6F8106D22295810B00AB9B01 /* CoordinateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8106D12295810B00AB9B01 /* CoordinateUtils.swift */; };
+		6F8106D4229581E500AB9B01 /* CornerImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8106D3229581E500AB9B01 /* CornerImageView.swift */; };
+		6F8106D62295828C00AB9B01 /* LoggerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8106D52295828C00AB9B01 /* LoggerUtils.swift */; };
+		6F8106DA2295889700AB9B01 /* TimerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8106D92295889700AB9B01 /* TimerUtils.swift */; };
 		6FB62EF8225E05D80047ACC3 /* GCDUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB62EF7225E05D80047ACC3 /* GCDUtils.swift */; };
 		F71AB7EC21EC5BEC002E65B1 /* CollectionUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71AB7EB21EC5BEC002E65B1 /* CollectionUtils.swift */; };
 		F71AB7EE21EC5F3E002E65B1 /* CharacterUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71AB7ED21EC5F3E002E65B1 /* CharacterUtils.swift */; };
@@ -39,6 +44,11 @@
 /* Begin PBXFileReference section */
 		6F8106A92271C4F800AB9B01 /* ControllerUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerUtils.swift; sourceTree = "<group>"; };
 		6F8106AC2289958100AB9B01 /* FileExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileExtension.swift; sourceTree = "<group>"; };
+		6F8106CF22957E8C00AB9B01 /* ScreenUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenUtils.swift; sourceTree = "<group>"; };
+		6F8106D12295810B00AB9B01 /* CoordinateUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinateUtils.swift; sourceTree = "<group>"; };
+		6F8106D3229581E500AB9B01 /* CornerImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CornerImageView.swift; sourceTree = "<group>"; };
+		6F8106D52295828C00AB9B01 /* LoggerUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggerUtils.swift; sourceTree = "<group>"; };
+		6F8106D92295889700AB9B01 /* TimerUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerUtils.swift; sourceTree = "<group>"; };
 		6FB62EF7225E05D80047ACC3 /* GCDUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDUtils.swift; sourceTree = "<group>"; };
 		F71AB7EB21EC5BEC002E65B1 /* CollectionUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionUtils.swift; sourceTree = "<group>"; };
 		F71AB7ED21EC5F3E002E65B1 /* CharacterUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterUtils.swift; sourceTree = "<group>"; };
@@ -82,6 +92,11 @@
 		F71AB7F121EC6318002E65B1 /* FunctionExtension */ = {
 			isa = PBXGroup;
 			children = (
+				6F8106D92295889700AB9B01 /* TimerUtils.swift */,
+				6F8106D52295828C00AB9B01 /* LoggerUtils.swift */,
+				6F8106D3229581E500AB9B01 /* CornerImageView.swift */,
+				6F8106D12295810B00AB9B01 /* CoordinateUtils.swift */,
+				6F8106CF22957E8C00AB9B01 /* ScreenUtils.swift */,
 				F7D5C8B2228A545600AFE245 /* DataUtils.swift */,
 				6FB62EF7225E05D80047ACC3 /* GCDUtils.swift */,
 				F7A7E95B225CADBE00CC67B0 /* ButtonUtils.swift */,
@@ -248,10 +263,13 @@
 				F793FA84225C623C00696D87 /* ListUtils.swift in Sources */,
 				F7A945A821D226F900DAD5C6 /* ViewController.swift in Sources */,
 				F71AB7EE21EC5F3E002E65B1 /* CharacterUtils.swift in Sources */,
+				6F8106D22295810B00AB9B01 /* CoordinateUtils.swift in Sources */,
 				F7A945A621D226F900DAD5C6 /* AppDelegate.swift in Sources */,
+				6F8106D62295828C00AB9B01 /* LoggerUtils.swift in Sources */,
 				F7D5C8B1228A540E00AFE245 /* OptionalUtils.swift in Sources */,
 				F7D0022A2295436A00807CBC /* MulticastDelegate.swift in Sources */,
 				F7313D742239EEC300B7D174 /* NavigationUtils.swift in Sources */,
+				6F8106DA2295889700AB9B01 /* TimerUtils.swift in Sources */,
 				F71AB7EC21EC5BEC002E65B1 /* CollectionUtils.swift in Sources */,
 				6FB62EF8225E05D80047ACC3 /* GCDUtils.swift in Sources */,
 				F772720B223F2F0A00BF354A /* PhotosUtils.swift in Sources */,
@@ -261,8 +279,10 @@
 				F7D5C8AF228A4EFE00AFE245 /* StringExtension.swift in Sources */,
 				6F8106AA2271C4F800AB9B01 /* ControllerUtils.swift in Sources */,
 				F7A4A5CD21E713D30015A320 /* ImageUtils.swift in Sources */,
+				6F8106D022957E8C00AB9B01 /* ScreenUtils.swift in Sources */,
 				F7D5C8F3228D275100AFE245 /* CalendarUtils.swift in Sources */,
 				F7BFFC9421F1BAA200062767 /* FDBaseNavigationController.swift in Sources */,
+				6F8106D4229581E500AB9B01 /* CornerImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

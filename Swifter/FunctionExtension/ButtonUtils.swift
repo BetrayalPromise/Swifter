@@ -61,7 +61,6 @@ public extension UIButton {
         return colors
     }
     
-    
     func image(for states: [UIControl.State]) -> [UIImage] {
         var images: [UIImage] = []
         for s in states {
