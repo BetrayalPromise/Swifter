@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol A {
+    func execute()
+}
+
 class ViewController: UIViewController {
+    
+    let delegate = MulticastDelegate<A>(relation: .weak)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +26,10 @@ class ViewController: UIViewController {
         print("base".base64.encoded())
         let value: String? = nil
         value?.base64.encoded()
+        
+        delegate.sync(queue: DispatchQueue(label: "com.nio.queue")) { (p) in
+            p.execute()
+        }
     }
 }
 
