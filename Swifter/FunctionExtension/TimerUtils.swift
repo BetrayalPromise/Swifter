@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-extension Timer {
+public extension Timer {
     private class TimerActionClosureWapper: NSObject {
         var closure: (() -> Void)?
         init(closure: @escaping (() -> Void)) {

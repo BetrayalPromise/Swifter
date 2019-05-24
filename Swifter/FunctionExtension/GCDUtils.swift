@@ -359,3 +359,9 @@ extension DispatchQueue {
         block()
     }
 }
+
+public extension DispatchQueue {
+    var queueLabel: String {
+        return String(cString: __dispatch_queue_get_label(self))
+    }
+}
