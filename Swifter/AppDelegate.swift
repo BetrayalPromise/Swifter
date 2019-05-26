@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  Swifter
-//
-//  Created by Chunyang Li 李春阳 on 2018/12/25.
-//  Copyright © 2018年 Chunyang Li 李春阳. All rights reserved.
-//
-
 import UIKit
 
 @UIApplicationMain

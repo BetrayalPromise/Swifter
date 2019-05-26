@@ -1,11 +1,3 @@
-//
-//  Model.swift
-//  Swifter
-//
-//  Created by Chunyang Li 李春阳 on 2018/12/27.
-//  Copyright © 2018 Chunyang Li 李春阳. All rights reserved.
-//
-
 import Foundation
 
 struct School: Codable {
