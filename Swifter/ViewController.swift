@@ -14,7 +14,11 @@ class ViewController: UIViewController {
         let hash: Dictionary<String, Any> = Dictionary<String, Any>()
         print(hash.find(by: "String") ?? "")
         print(UnsafePointer<Int8>(bitPattern: 8) ?? "")
+        print(hash.find(by: "String") ?? "")
+
         print("C".c.utf8() ?? "")
+        print("C".c.utf8()?.toString() ?? "")
+        
         print("base".base64.encoded() ?? "")
         let value: String? = nil
         print(value?.base64.encoded() ?? "")
@@ -28,20 +32,20 @@ class ViewController: UIViewController {
         let array = ["3"]
         array.find(at: 3)
         array[safe: 3]
+        DispatchQueue.once(token: "A") {
+            print("A")
+        }
+        DispatchQueue.once(token: "A") {
+            print("A")
+        }
+        DispatchQueue.once(token: "A") {
+            print("A")
+        }
     }
 }
 
-
-extension UINavigationBar {
-    /// 控制导航栏1px线是否显示
-    public func controlLine(with isHidden: Bool) {
-        for v in self.subviews {
-            for vv in v.subviews {
-                if vv.isKind(of: UIImageView.self) && vv.frame.size.height == 0.5 {
-                    vv.isHidden = isHidden
-                    break
-                }
-            }
-        }
+extension ViewController: A {
+    func execute() {
+        print("A")
     }
 }
