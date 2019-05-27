@@ -1,11 +1,3 @@
-//
-//  CornerImageView.swift
-//  UIImageView
-//
-//  Created by 李阳 on 21/7/2017.
-//  Copyright © 2017 qms. All rights reserved.
-//
-
 import UIKit
 
 class CornerImageView: UIImageView {

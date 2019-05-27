@@ -5,7 +5,6 @@ protocol A {
 }
 
 class ViewController: UIViewController {
-    
     let delegate = MulticastDelegate<A>(relation: .weak)
 
     override func viewDidLoad() {
@@ -17,8 +16,11 @@ class ViewController: UIViewController {
         print(hash.find(by: "String") ?? "")
 
         print("C".c.utf8() ?? "")
-        print("C".c.utf8()?.toString() ?? "")
+        print("C".c.utf8()?.asString() ?? "")
         
+        print("C".c.utf8() ?? "")
+        print("C".c.utf8()?.asString() ?? "")
+    
         print("base".base64.encoded() ?? "")
         let value: String? = nil
         print(value?.base64.encoded() ?? "")
@@ -31,7 +33,7 @@ class ViewController: UIViewController {
 
         let array = ["3"]
         array.find(at: 3)
-        array[safe: 3]
+        print(array[safe: 3] ?? "")
         DispatchQueue.once(token: "A") {
             print("A")
         }

@@ -84,7 +84,6 @@ public extension Array {
 }
 
 public extension Collection {
-    @discardableResult
     subscript(safe index: Index) -> Iterator.Element? {
         return indices.contains(index) ? self[index] : nil
     }

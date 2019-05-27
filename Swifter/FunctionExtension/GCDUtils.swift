@@ -1,11 +1,3 @@
-//
-//  GCD.swift
-//  Swifter
-//
-//  Created by Chunyang Li 李春阳 on 2019/1/16.
-//  Copyright © 2019 Chunyang Li 李春阳. All rights reserved.
-//
-
 import Foundation
 
 // #MARK: - 串行队列

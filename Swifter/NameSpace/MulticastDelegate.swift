@@ -6,10 +6,11 @@ public enum Relation {
     case weak
 }
 
+/// 多重代理
 open class MulticastDelegate<T> {
     private let delegates: NSHashTable<AnyObject>
 
-    public var delegatesCount: Int {
+    public var count: Int {
         return self.delegates.allObjects.count
     }
     

@@ -65,6 +65,10 @@ extension FileManager {
     
     @discardableResult
     public class func rename(old: String, new: String) -> Bool {
+        if old == new {
+            debugPrint("名称相同")
+            return false
+        }
         guard let oldPath: UnsafePointer<Int8> = old.c.utf8(), let newPath: UnsafePointer<Int8> = new.c.utf8() else {
             debugPrint("路径转化失败")
             return false
@@ -154,4 +158,20 @@ extension FileManager {
         stat(path, &info)
         return info
     }
+}
+
+public func homeDirectory() -> String {
+    return NSHomeDirectory()
+}
+
+public func temporaryDirectory() -> String {
+    return NSTemporaryDirectory()
+}
+
+public func documentDirectory() -> String {
+    return NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first ?? ""
+}
+
+public func cachesDirectory() -> String {
+    return NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first ?? ""
 }
