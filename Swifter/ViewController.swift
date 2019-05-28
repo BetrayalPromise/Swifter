@@ -44,6 +44,8 @@ class ViewController: UIViewController {
             print("A")
         }
         logger(message: "AAA")
+        print(homeDirectory())
+        print(FileManager.files(path: homeDirectory()))
     }
 }
 

@@ -1,12 +1,6 @@
 import Foundation
 import Darwin.sys
 
-private enum FileKind {
-    case file
-    case directory
-    case all
-}
-
 extension FileManager {
     /// 判断文件是否存在
     ///
@@ -129,7 +123,36 @@ extension FileManager {
         return true
     }
     
-    private class func files(path: String, type: FileKind = .all) -> Set<String>? {
+    public class func type(path: String) -> String? {
+        guard var info: stat = self.inforation(of: path) else { return nil }
+        let result = stat(path, &info)
+        if result == 0 {
+            switch info.st_mode & S_IFMT {
+            case S_IFSOCK: return "s"   // 套接字文件
+            case S_IFLNK: return "l"      // 软连接文件
+            case S_IFREG: return "-"    // 普通文件
+            case S_IFBLK: return "b"    // 块设备文件
+            case S_IFDIR: return "d"     // 目录文件
+            case S_IFCHR: return "c"    // 字符设备文件
+            case S_IFIFO: return "p"     // 管道文件
+            default: return nil
+            }
+        } else {
+            return nil
+        }
+    }
+    
+    public class func size(path: String) -> Int64? {
+        guard var info: stat = self.inforation(of: path) else { return nil }
+        let result = stat(path, &info)
+        if result == 0 {
+            return info.st_size
+        } else {
+            return nil
+        }
+    }
+    
+    public class func files(path: String) -> Set<String>? {
         guard let path: UnsafePointer<Int8> = (path as NSString).utf8String else {
             debugPrint("路径转化失败")
             return nil
@@ -143,6 +166,7 @@ extension FileManager {
         repeat {
             dirp = readdir(dir)
             // TODO: 处理获取文件信息
+            print(dir?.pointee.__dd_size ?? 0)
         } while dirp != nil
         closedir(dir)
         return Set<String>()
