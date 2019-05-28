@@ -43,6 +43,7 @@ class ViewController: UIViewController {
         DispatchQueue.once(token: "A") {
             print("A")
         }
+        logger(message: "AAA")
     }
 }
 
