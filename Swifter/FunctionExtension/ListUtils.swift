@@ -18,7 +18,7 @@ extension UITableViewCell {
         static var key: String = "UITableViewCellAssociatedKey"
     }
     
-    public var indexPath: IndexPath? {
+    public var ownIndexPath: IndexPath? {
         set {
             let value = objc_getAssociatedObject(self, &UITableViewCellAssociated.key) as? IndexPath
             if value != nil {
