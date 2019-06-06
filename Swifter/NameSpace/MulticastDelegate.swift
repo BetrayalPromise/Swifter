@@ -58,12 +58,3 @@ public func +=<T>(left: MulticastDelegate<T>, right: T) {
 public func -=<T>(left: MulticastDelegate<T>, right: T) {
 	left.remove(by: right)
 }
-
-//precedencegroup MulticastPrecedence {
-//    associativity: left
-//    higherThan: TernaryPrecedence
-//}
-//infix operator |> : MulticastPrecedence
-//public func |><T>(left: MulticastDelegate<T>, right: (T) -> ()) {
-//    left.invokeDelegates(right)
-//}

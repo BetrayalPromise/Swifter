@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -28,6 +28,7 @@
 		F78633FF2252FE6000CCB8F0 /* DeviceUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78633FE2252FE6000CCB8F0 /* DeviceUtils.swift */; };
 		F7925BBC225B101400358E64 /* NIOModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7925BBB225B101400358E64 /* NIOModel.swift */; };
 		F793FA84225C623C00696D87 /* ListUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F793FA83225C623C00696D87 /* ListUtils.swift */; };
+		F79F01FE22A8B85C00678254 /* FunctionUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79F01FD22A8B85C00678254 /* FunctionUtils.swift */; };
 		F7A4A5CD21E713D30015A320 /* ImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A4A5CC21E713D30015A320 /* ImageUtils.swift */; };
 		F7A7E95C225CADBE00CC67B0 /* ButtonUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A7E95B225CADBE00CC67B0 /* ButtonUtils.swift */; };
 		F7A945A621D226F900DAD5C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A945A521D226F900DAD5C6 /* AppDelegate.swift */; };
@@ -71,6 +72,7 @@
 		F78633FE2252FE6000CCB8F0 /* DeviceUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceUtils.swift; sourceTree = "<group>"; };
 		F7925BBB225B101400358E64 /* NIOModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NIOModel.swift; sourceTree = "<group>"; };
 		F793FA83225C623C00696D87 /* ListUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUtils.swift; sourceTree = "<group>"; };
+		F79F01FD22A8B85C00678254 /* FunctionUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionUtils.swift; sourceTree = "<group>"; };
 		F7A4A5CC21E713D30015A320 /* ImageUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUtils.swift; sourceTree = "<group>"; };
 		F7A7E95B225CADBE00CC67B0 /* ButtonUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonUtils.swift; sourceTree = "<group>"; };
 		F7A945A221D226F900DAD5C6 /* Swifter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swifter.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,7 +112,6 @@
 				3B636FAFF9F7D2A3704F57D2 /* Pods-Swifter.debug.xcconfig */,
 				22D0920C482B7124A12A17F4 /* Pods-Swifter.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -151,6 +152,7 @@
 				6F8106A92271C4F800AB9B01 /* ControllerUtils.swift */,
 				F7C466352297A0CB0014B6B1 /* GenericsUtils.swift */,
 				F7CA8E4D22A12B4900E7A0BE /* ViewUtils.swift */,
+				F79F01FD22A8B85C00678254 /* FunctionUtils.swift */,
 			);
 			path = FunctionExtension;
 			sourceTree = "<group>";
@@ -335,6 +337,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F79F01FE22A8B85C00678254 /* FunctionUtils.swift in Sources */,
 				F78633FF2252FE6000CCB8F0 /* DeviceUtils.swift in Sources */,
 				F7A7E95C225CADBE00CC67B0 /* ButtonUtils.swift in Sources */,
 				F7CA8E4E22A12B4900E7A0BE /* ViewUtils.swift in Sources */,

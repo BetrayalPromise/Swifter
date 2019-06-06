@@ -1,10 +1,10 @@
 import Foundation
 import CoreLocation
 
-let PI: Double = 3.1415926535897932384626
-let a: Double = 6378245.0
-let ee: Double = 0.00669342162296594323
-let x_PI: Double = 3.14159265358979324 * 3000.0 / 180.0
+private let PI: Double = 3.1415926535897932384626
+private let a: Double = 6378245.0
+private let ee: Double = 0.00669342162296594323
+private let x_PI: Double = 3.14159265358979324 * 3000.0 / 180.0
 
 extension CLLocationCoordinate2D {
     /**

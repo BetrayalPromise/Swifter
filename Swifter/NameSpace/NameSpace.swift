@@ -5,12 +5,12 @@ import Foundation
 public protocol CWrapper {
     associatedtype CWrapperType
     var c: CWrapperType { get }
-    static var c: CWrapperType.Type { get }
+//    static var c: CWrapperType.Type { get }
 }
 
 public extension CWrapper {
     var c: CType<Self> { return CType(value: self) }
-    static var c: CType<Self>.Type { return CType.self }
+//    static var c: CType<Self>.Type { return CType.self }
 }
 
 /// 需要扩展的协议
@@ -30,12 +30,12 @@ public struct CType<T>: CWrapped {
 public protocol Base64Wrapper {
     associatedtype Base64WrapperType
     var base64: Base64WrapperType { get }
-    static var base64: Base64WrapperType.Type { get }
+//    static var base64: Base64WrapperType.Type { get }
 }
 
 public extension Base64Wrapper {
     var base64: Base64Type<Self> { return Base64Type(value: self) }
-    static var base64: Base64Type<Self>.Type { return Base64Type.self }
+//    static var base64: Base64Type<Self>.Type { return Base64Type.self }
 }
 
 public protocol Base64Wrapped {
