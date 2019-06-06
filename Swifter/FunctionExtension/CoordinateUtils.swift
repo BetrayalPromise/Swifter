@@ -6,7 +6,7 @@ private let a: Double = 6378245.0
 private let ee: Double = 0.00669342162296594323
 private let x_PI: Double = 3.14159265358979324 * 3000.0 / 180.0
 
-extension CLLocationCoordinate2D {
+public extension CLLocationCoordinate2D {
     /**
      * 百度坐标系 (BD-09) 与 火星坐标系 (GCJ-02)的转换
      * 即 百度 转 谷歌、高德
@@ -19,7 +19,7 @@ extension CLLocationCoordinate2D {
         let theta = atan2(y, x) - 0.000003 * cos(x * x_pi)
         let gcj_longitude = z * cos(theta)
         let gcj_latitude  = z * sin(theta)
-        return CLLocationCoordinate2DMake(gcj_longitude, gcj_latitude)
+        return CLLocationCoordinate2D(latitude: gcj_longitude, longitude: gcj_latitude)
     }
 
     /**

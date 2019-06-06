@@ -174,8 +174,7 @@ public extension Optional {
     /// - Parameter predicate: 过滤规则
     /// - Returns: 过滤后的值
     func filter(_ predicate: (Wrapped) -> Bool) -> Wrapped? {
-        guard let unwrapped = self,
-            predicate(unwrapped) else { return nil }
+        guard let unwrapped: Wrapped = self, predicate(unwrapped) else { return nil }
         return self
     }
     
@@ -183,8 +182,19 @@ public extension Optional {
     ///
     /// - Parameter message: 错误信息
     /// - Returns: 确定有的值
-    func expect(_ message: String) -> Wrapped {
-        guard let value = self else { fatalError(message) }
+    @discardableResult
+    func expect(file: String = #file, funcName: String = #function, lineName: Int = #line) -> Wrapped {
+        print(file, funcName, lineName)
+        guard let value: Wrapped = self else {
+            fatalError("强制拆包错误")
+        }
         return value
+    }
+}
+
+protocol Contextualizable {}
+extension Contextualizable {
+    func currentContext(file: String = #file, function : String = #function, line : Int = #line) -> String {
+        return "\(file):\(function):\(line):\(type(of: self))"
     }
 }

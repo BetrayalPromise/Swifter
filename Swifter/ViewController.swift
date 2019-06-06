@@ -47,7 +47,12 @@ class ViewController: UIViewController {
         print(homeDirectory())
         print(FileManager.files(path: homeDirectory()) ?? "")
         
-        
+        var size: Int?
+        guard size.isNone else {
+            size = 3
+            return
+        }
+        size.expect().byteSwapped
     }
 }
 
