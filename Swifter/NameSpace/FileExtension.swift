@@ -183,19 +183,3 @@ extension FileManager {
         return info
     }
 }
-
-public func homeDirectory() -> String {
-    return NSHomeDirectory()
-}
-
-public func temporaryDirectory() -> String {
-    return NSTemporaryDirectory()
-}
-
-public func documentDirectory() -> String {
-    return NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first ?? ""
-}
-
-public func cachesDirectory() -> String {
-    return NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first ?? ""
-}

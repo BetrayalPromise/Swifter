@@ -186,15 +186,10 @@ public extension Optional {
     func expect(file: String = #file, funcName: String = #function, lineName: Int = #line) -> Wrapped {
         print(file, funcName, lineName)
         guard let value: Wrapped = self else {
+            #if DEBUG
             fatalError("强制拆包错误")
+            #endif
         }
         return value
-    }
-}
-
-protocol Contextualizable {}
-extension Contextualizable {
-    func currentContext(file: String = #file, function : String = #function, line : Int = #line) -> String {
-        return "\(file):\(function):\(line):\(type(of: self))"
     }
 }

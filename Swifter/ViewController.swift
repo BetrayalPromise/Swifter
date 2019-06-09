@@ -44,15 +44,23 @@ class ViewController: UIViewController {
             print("A")
         }
         logger(message: "AAA")
-        print(homeDirectory())
-        print(FileManager.files(path: homeDirectory()) ?? "")
+        print(Directory.home.path)
+        print(FileManager.files(path: Directory.home.path))
         
-        var size: Int?
-        guard size.isNone else {
-            size = 3
-            return
-        }
-        size.expect().byteSwapped
+        var size: Int? = 3
+        size = nil
+        print(size.else(value: 20))
+
+
+        let car: Car = Car(name: "A", engine: "B", type: "C")
+        car.save(to: Directory.document.path + "/a.b")
+        let instance = Car.fetch(from: Directory.document.path + "/a.b")
+        print(instance)
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        print(self.view.safeAreaInsets)
     }
 }
 
@@ -61,3 +69,11 @@ extension ViewController: A {
         print("A")
     }
 }
+
+struct Car: Codable {
+    var name: String
+    var engine: String
+    var type: String
+}
+
+extension Car: Cachable {}
