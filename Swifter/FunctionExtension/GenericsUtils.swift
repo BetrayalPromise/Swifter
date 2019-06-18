@@ -10,9 +10,7 @@ public extension UnsafePointer where Pointee == Int8 {
 }
 
 protocol Cachable {
-
     func save(to path: String) -> Result<Void, Error>
-
     static func fetch(from path: String) -> Self?
 }
 

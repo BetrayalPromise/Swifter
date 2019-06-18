@@ -51,11 +51,28 @@ class ViewController: UIViewController {
         size = nil
         print(size.else(value: 20))
 
-
         let car: Car = Car(name: "A", engine: "B", type: "C")
         car.save(to: Directory.document.path + "/a.b")
-        let instance = Car.fetch(from: Directory.document.path + "/a.b")
-        print(instance)
+        let instance: Car? = Car.fetch(from: Directory.document.path + "/a.b")
+        print(instance ?? Car(name: "A", engine: "B", type: "C"))
+//        print(car.toData())
+//        print(car.toString())
+//        print(car.toObject())
+//        print(car.toModel(type: Car.self))
+
+//        let string: String = "{\"name\":\"A\",\"engine\":\"B\",\"type\":\"C\"}"
+//        print(string.toData())
+//        print(string.toString())
+//        print(string.toModel(type: Car.self))
+//        print(string.toObject())
+
+//        let dict = ["name": "A", "engine": "B", "type": "C"]
+//        print(dict.toData())
+//        print(dict.toString())
+//        print(dict.toObject())
+//        print(dict.toModel(type: Car.self))
+
+        
     }
 
     override func viewDidLayoutSubviews() {
