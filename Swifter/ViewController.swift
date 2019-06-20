@@ -72,7 +72,8 @@ class ViewController: UIViewController {
 //        print(dict.toObject())
 //        print(dict.toModel(type: Car.self))
 
-        
+        let name = "但开发的看法"
+        print(name.base64.encoded())
     }
 
     override func viewDidLayoutSubviews() {
