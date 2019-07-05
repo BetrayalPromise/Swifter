@@ -66,7 +66,7 @@ public extension Optional {
     ///   - use: 默认值
     /// - Returns: 处理后的值
     /// - Throws: 可能抛出的异常
-    func map<T>(_ closure: (Wrapped) throws -> T, else use : T) rethrows -> T {
+    func map<T>(closure: (Wrapped) throws -> T, else use : T) rethrows -> T {
         return try map(closure) ?? use
     }
     
@@ -78,7 +78,7 @@ public extension Optional {
     ///   - block: 默认处理闭包
     /// - Returns: 处理后的值
     /// - Throws: 可能抛出的异常
-    func map<T>(_ closure: (Wrapped) throws -> T, else block: () throws -> T) rethrows -> T {
+    func map<T>(closure: (Wrapped) throws -> T, else block: () throws -> T) rethrows -> T {
         return try map(closure) ?? block()
     }
 }
@@ -88,64 +88,39 @@ extension Optional {
     ///
     /// - Parameter other: 其他Optional类型值
     /// - Returns: &值
-    func and<T>(_ other: T?) -> T? {
+    func and<T>(value: T?) -> T? {
         guard self != nil else { return nil }
-        return other
+        return value
     }
 
-    func and<T>(_ closure: (Wrapped) throws -> T?) rethrows -> T? {
+    func and<T>(closure: (Wrapped) throws -> T?) rethrows -> T? {
         guard let unwrapped = self else { return nil }
         return try closure(unwrapped)
     }
 
-    func zip<A>(_ value0: Optional<A>) -> (Wrapped, A)? {
-        guard let a = self, let b = value0 else { return nil }
+    func zip<A>(parameter0: Optional<A>) -> (Wrapped, A)? {
+        guard let a = self, let b = parameter0 else { return nil }
         return (a, b)
     }
     
-    func zip<A, B>(_ value0: Optional<A>, _ value1: Optional<B>) -> (Wrapped, A, B)? {
-        guard let a = self, let b = value0, let c = value1 else { return nil }
+    func zip<A, B>(parameter0: Optional<A>, parameter1: Optional<B>) -> (Wrapped, A, B)? {
+        guard let a = self, let b = parameter0, let c = parameter1 else { return nil }
         return (a, b, c)
     }
     
-    func zip<A, B, C>(_ value0: Optional<A>, _ value1: Optional<B>, _ value2: Optional<C>) -> (Wrapped, A, B, C)? {
-        guard let a = self, let b = value0, let c = value1, let d = value2 else { return nil }
+    func zip<A, B, C>(parameter0: Optional<A>, parameter1: Optional<B>, parameter2: Optional<C>) -> (Wrapped, A, B, C)? {
+        guard let a = self, let b = parameter0, let c = parameter1, let d = parameter2 else { return nil }
         return (a, b, c, d)
     }
     
-    func zip<A, B, C, D>(_ value0: Optional<A>, _ value1: Optional<B>, _ value2: Optional<C>, _ value3: Optional<D>) -> (Wrapped, A, B, C, D)? {
-        guard let a = self, let b = value0, let c = value1, let d = value2, let e = value3 else { return nil }
+    func zip<A, B, C, D>(parameter0: Optional<A>, parameter1: Optional<B>, parameter2: Optional<C>, parameter3: Optional<D>) -> (Wrapped, A, B, C, D)? {
+        guard let a = self, let b = parameter0, let c = parameter1, let d = parameter2, let e = parameter3 else { return nil }
         return (a, b, c, d, e)
     }
     
-    func zip<A, B, C, D, E>(_ value0: Optional<A>, _ value1: Optional<B>, _ value2: Optional<C>, _ value3: Optional<D>, _ value4: Optional<E>) -> (Wrapped, A, B, C, D, E)? {
-        guard let a = self, let b = value0, let c = value1, let d = value2, let e = value3, let f = value4 else { return nil }
+    func zip<A, B, C, D, E>(parameter0: Optional<A>, parameter1: Optional<B>, parameter2: Optional<C>, parameter3: Optional<D>, parameter4: Optional<E>) -> (Wrapped, A, B, C, D, E)? {
+        guard let a = self, let b = parameter0, let c = parameter1, let d = parameter2, let e = parameter3, let f = parameter4 else { return nil }
         return (a, b, c, d, e, f)
-    }
-    
-    func zip<A, B, C, D, E, F>(_ value0: Optional<A>, _ value1: Optional<B>, _ value2: Optional<C>, _ value3: Optional<D>, _ value4: Optional<E>, _ value5: Optional<F>) -> (Wrapped, A, B, C, D, E, F)? {
-        guard let a = self, let b = value0, let c = value1, let d = value2, let e = value3, let f = value4, let g = value5 else { return nil }
-        return (a, b, c, d, e, f, g)
-    }
-    
-    func zip<A, B, C, D, E, F, G>(_ value0: Optional<A>, _ value1: Optional<B>, _ value2: Optional<C>, _ value3: Optional<D>, _ value4: Optional<E>, _ value5: Optional<F>, _ value6: Optional<G>) -> (Wrapped, A, B, C, D, E, F, G)? {
-        guard let a = self, let b = value0, let c = value1, let d = value2, let e = value3, let f = value4, let g = value5, let h = value6 else { return nil }
-        return (a, b, c, d, e, f, g, h)
-    }
-    
-    func zip<A, B, C, D, E, F, G, H>(_ value0: Optional<A>, _ value1: Optional<B>, _ value2: Optional<C>, _ value3: Optional<D>, _ value4: Optional<E>, _ value5: Optional<F>, _ value6: Optional<G>, _ value7: Optional<H>) -> (Wrapped, A, B, C, D, E, F, G, H)? {
-        guard let a = self, let b = value0, let c = value1, let d = value2, let e = value3, let f = value4, let g = value5, let h = value6, let i = value7 else { return nil }
-        return (a, b, c, d, e, f, g, h, i)
-    }
-    
-    func zip<A, B, C, D, E, F, G, H, I>(_ value0: Optional<A>, _ value1: Optional<B>, _ value2: Optional<C>, _ value3: Optional<D>, _ value4: Optional<E>, _ value5: Optional<F>, _ value6: Optional<G>, _ value7: Optional<H>, _ value8: Optional<I>) -> (Wrapped, A, B, C, D, E, F, G, H, I)? {
-        guard let a = self, let b = value0, let c = value1, let d = value2, let e = value3, let f = value4, let g = value5, let h = value6, let i = value7, let j = value8 else { return nil }
-        return (a, b, c, d, e, f, g, h, i, j)
-    }
-    
-    func zip<A, B, C, D, E, F, G, H, I, J>(_ value0: Optional<A>, _ value1: Optional<B>, _ value2: Optional<C>, _ value3: Optional<D>, _ value4: Optional<E>, _ value5: Optional<F>, _ value6: Optional<G>, _ value7: Optional<H>, _ value8: Optional<I>, _ value9: Optional<J>) -> (Wrapped, A, B, C, D, E, F, G, H, I, J)? {
-        guard let a = self, let b = value0, let c = value1, let d = value2, let e = value3, let f = value4, let g = value5, let h = value6, let i = value7, let j = value8, let k = value9 else { return nil }
-        return (a, b, c, d, e, f, g, h, i, j, k)
     }
 }
 
@@ -173,7 +148,7 @@ public extension Optional {
     ///
     /// - Parameter predicate: 过滤规则
     /// - Returns: 过滤后的值
-    func filter(_ predicate: (Wrapped) -> Bool) -> Wrapped? {
+    func filter(predicate: (Wrapped) -> Bool) -> Wrapped? {
         guard let unwrapped: Wrapped = self, predicate(unwrapped) else { return nil }
         return self
     }

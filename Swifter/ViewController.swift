@@ -44,16 +44,16 @@ class ViewController: UIViewController {
             print("A")
         }
         logger(message: "AAA")
-        print(Directory.home.path)
-        print(FileManager.files(path: Directory.home.path))
+        print(Directory.home.rawValue)
+        print(FileManager.files(path: Directory.home.rawValue))
         
         var size: Int? = 3
         size = nil
         print(size.else(value: 20))
 
         let car: Car = Car(name: "A", engine: "B", type: "C")
-        car.save(to: Directory.document.path + "/a.b")
-        let instance: Car? = Car.fetch(from: Directory.document.path + "/a.b")
+        car.save(to: Directory.document.rawValue + "/a.b")
+        let instance: Car? = Car.fetch(from: Directory.document.rawValue + "/a.b")
         print(instance ?? Car(name: "A", engine: "B", type: "C"))
 //        print(car.toData())
 //        print(car.toString())
