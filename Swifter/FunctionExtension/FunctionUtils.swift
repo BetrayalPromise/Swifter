@@ -10,7 +10,22 @@ public func handle(_ do: () throws -> Void) -> Error? {
     }
 }
 
-public enum Directory: String {
+public enum Directory: RawRepresentable {
+    public init?(rawValue: String) {
+        switch rawValue {
+        case NSHomeDirectory():
+            self = .home
+        case NSTemporaryDirectory():
+            self = .temporary
+        case NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first ?? "":
+            self = .document
+        case NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true).first ?? "":
+            self = .library
+        default:
+            self = .home
+        }
+    }
+    
     case home
     case temporary
     case document
