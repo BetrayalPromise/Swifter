@@ -45,7 +45,7 @@ class ViewController: UIViewController {
         }
         logger(message: "AAA")
         print(Directory.home.rawValue)
-        print(FileManager.files(path: Directory.home.rawValue))
+        print(FileManager.files(path: Directory.home.rawValue) ?? "")
         
         var size: Int? = 3
         size = nil
@@ -73,7 +73,7 @@ class ViewController: UIViewController {
 //        print(dict.toModel(type: Car.self))
 
         let name = "但开发的看法"
-        print(name.base64.encoded())
+        print(name.base64.encoded() ?? "")
     }
 
     override func viewDidLayoutSubviews() {

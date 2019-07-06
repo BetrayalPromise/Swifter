@@ -13,27 +13,6 @@ public extension UITableView {
     }
 }
 
-extension UITableViewCell {
-    private struct UITableViewCellAssociated {
-        static var key: String = "UITableViewCellAssociatedKey"
-    }
-    
-    public var ownIndexPath: IndexPath? {
-        set {
-            let value = objc_getAssociatedObject(self, &UITableViewCellAssociated.key) as? IndexPath
-            if value != nil {
-                if value != newValue {
-                    objc_setAssociatedObject(self, &UITableViewCellAssociated.key, newValue, .OBJC_ASSOCIATION_COPY_NONATOMIC)
-                }
-            } else {
-                objc_setAssociatedObject(self, &UITableViewCellAssociated.key, newValue, .OBJC_ASSOCIATION_COPY_NONATOMIC)
-            }
-        } get {
-            return objc_getAssociatedObject(self, &UITableViewCellAssociated.key) as? IndexPath
-        }
-    }
-}
-
 public extension UICollectionView {
     @available(iOS 6.0, *)
     func registerCell<T>(with type: T.Type) where T: UICollectionViewCell {
@@ -51,23 +30,28 @@ public extension UICollectionView {
     }
 }
 
-extension UICollectionViewCell {
-    private struct UICollectionViewCellAssociated {
-        static var key: String = "UICollectionViewCellAssociatedKey"
-    }
-    
+public protocol IndexPathControllable: class {
+    var indexPath: IndexPath? { set get }
+}
+
+extension IndexPathControllable where Self: UITableViewCell {
     public var indexPath: IndexPath? {
         set {
-            let value = objc_getAssociatedObject(self, &UICollectionViewCellAssociated.key) as? IndexPath
-            if value != nil {
-                if value != newValue {
-                    objc_setAssociatedObject(self, &UICollectionViewCellAssociated.key, newValue, .OBJC_ASSOCIATION_COPY_NONATOMIC)
-                }
-            } else {
-                objc_setAssociatedObject(self, &UICollectionViewCellAssociated.key, newValue, .OBJC_ASSOCIATION_COPY_NONATOMIC)
-            }
+            guard let `newValue` = newValue else { return }
+            objc_setAssociatedObject(self, NSStringFromClass(Self.self), newValue, .OBJC_ASSOCIATION_COPY_NONATOMIC)
         } get {
-            return objc_getAssociatedObject(self, &UICollectionViewCellAssociated.key) as? IndexPath
+            return objc_getAssociatedObject(self, NSStringFromClass(Self.self)) as? IndexPath
+        }
+    }
+}
+
+extension IndexPathControllable where Self: UICollectionViewCell {
+    public var indexPath: IndexPath? {
+        set {
+            guard let `newValue` = newValue else { return }
+            objc_setAssociatedObject(self, NSStringFromClass(Self.self), newValue, .OBJC_ASSOCIATION_COPY_NONATOMIC)
+        } get {
+            return objc_getAssociatedObject(self, NSStringFromClass(Self.self)) as? IndexPath
         }
     }
 }

@@ -2,7 +2,7 @@ import UIKit
 import ObjectiveC
 
 /// 实现 UITextField 及其它们的子类
-public protocol TextFieldControllable: class {
+public protocol TextFieldControllable where Self: UITextField {
     func max(value: Int)
 }
 
@@ -78,9 +78,12 @@ private class Agent: NSObject {
     }
 }
 
-public protocol TextViewControllable: class {
+public typealias AttributedString = NSAttributedString
+public typealias MutableAttributedString = NSMutableAttributedString
+
+public protocol TextViewControllable where Self: UITextView {
     func placeholder(value: String)
-    func attributedPlaceholder(value: NSAttributedString)
+    func attributedPlaceholder(value: AttributedString)
     func max(value: Int)
 }
 
@@ -93,10 +96,10 @@ public extension TextViewControllable where Self: UITextView {
     }
     
     private func createPlaceHolderLabel() -> UILabel {
-        guard let label: UILabel = objc_getAssociatedObject(self, "createPlaceHolderLabel") as? UILabel else {
+        guard let label: UILabel = objc_getAssociatedObject(self, #function) as? UILabel else {
             let label: UILabel = UILabel(frame: .zero)
             self.addSubview(label)
-            objc_setAssociatedObject(self, "createPlaceHolderLabel", label, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, #function, label, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             label.translatesAutoresizingMaskIntoConstraints = false
             label.numberOfLines = 0
             label.textColor = UIColor(red: 171.0 / 255.0, green: 171.0 / 255.0, blue: 176.0 / 255.0, alpha: 1.0)
@@ -113,7 +116,7 @@ public extension TextViewControllable where Self: UITextView {
     }
     
     /// UITextView的attributedPlaceholder 如要生效必须先设置字体大小
-    func attributedPlaceholder(value: NSAttributedString) {
+    func attributedPlaceholder(value: AttributedString) {
         let label: UILabel = self.createPlaceHolderLabel()
         label.text = nil
         label.attributedText = value

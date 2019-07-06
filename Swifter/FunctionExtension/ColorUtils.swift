@@ -24,4 +24,8 @@ public extension UIColor {
     convenience init(rgb: Int, alpha: CGFloat = 1.0) {
         self.init(red: ((CGFloat)((rgb & 0xFF0000) >> 16)) / 255.0, green: ((CGFloat)((rgb & 0xFF00) >> 8)) / 255.0, blue: ((CGFloat)(rgb & 0xFF)) / 255.0, alpha: alpha)
     }
+    
+    convenience init(hexValue: Int, alpha: Float = 1.0) {
+        self.init(red: CGFloat((hexValue & 0xFF0000) >> 16)/255.0, green: CGFloat((hexValue & 0xFF00) >> 8)/255.0, blue: CGFloat(hexValue & 0xFF)/255.0, alpha: CGFloat(alpha))
+    }
 }
