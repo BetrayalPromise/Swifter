@@ -44,12 +44,13 @@ public extension Array where Element: Equatable {
 
 public extension Dictionary {
     @discardableResult
-    func find(by key: AnyHashable) -> Any? {
-        return (self as NSDictionary).object(forKey: key)
+    func find(by key: Key) -> Any? {
+        return self[key]
     }
 }
 
 public extension Dictionary {
+    @discardableResult
     func buildHTTPBodyParameters() -> String? {
         var body: String = ""
         if self.keys.count == 0 {

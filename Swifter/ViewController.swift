@@ -28,9 +28,6 @@ class ViewController: UIViewController {
             p.execute()
         }
 
-        let db = DataBase()
-        db.open(with: NSTemporaryDirectory() + "user.sqlite")
-
         let array = ["3"]
         array.find(at: 3)
         print(array[safe: 3] ?? "")

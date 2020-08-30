@@ -143,7 +143,12 @@ public extension Optional {
     }
 }
 
-public extension Optional {
+// 自定义类型需要自行实现协议
+public protocol TypeInitialize {
+    init()
+}
+
+public extension Optional where Wrapped: TypeInitialize {
     /// filter函数
     ///
     /// - Parameter predicate: 过滤规则
@@ -163,8 +168,15 @@ public extension Optional {
         guard let value: Wrapped = self else {
             #if DEBUG
             fatalError("强制拆包错误")
+            #else
+            print("强制拆包错误 返回默认初始化值")
+            return Wrapped()
             #endif
         }
         return value
     }
+}
+
+func when<T>(condition: () -> Bool, then: () -> T, `else`: () ->T) -> T {
+    condition() ? then() : `else`()
 }

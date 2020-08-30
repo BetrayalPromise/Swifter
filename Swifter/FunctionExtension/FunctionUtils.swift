@@ -1,7 +1,7 @@
 import Foundation
 
 @discardableResult
-public func handle(_ do: () throws -> Void) -> Error? {
+public func handle(do: () throws -> Void) -> Error? {
     do {
         try `do`()
         return nil
@@ -22,10 +22,11 @@ public enum Directory: RawRepresentable {
         case NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true).first ?? "":
             self = .library
         default:
-            self = .home
+            self = .none
         }
     }
-    
+
+    case none
     case home
     case temporary
     case document
@@ -34,6 +35,7 @@ public enum Directory: RawRepresentable {
     
     public var rawValue: String {
         switch self {
+        case .none: return ""
         case .home: return NSHomeDirectory()
         case .temporary: return NSTemporaryDirectory()
         case .document: return NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first ?? ""
