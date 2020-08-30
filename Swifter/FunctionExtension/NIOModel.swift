@@ -134,6 +134,7 @@ public extension Data {
 }
 
 public extension Encodable {
+    // MARK: 转二进制
     func toData() -> Data? {
         do {
             return try JSONEncoder().encode(self)
@@ -143,6 +144,7 @@ public extension Encodable {
         }
     }
     
+    // MARK: 转字符串
     func toString() -> String? {
         guard let data: Data = self.toData() else {
             return nil
@@ -150,6 +152,7 @@ public extension Encodable {
         return String(data: data, encoding: String.Encoding.utf8)
     }
     
+    // MARK: 转对象
     func toObject() -> Any? {
         guard let data = self.toData() else { return nil }
         do {
@@ -161,6 +164,7 @@ public extension Encodable {
 }
 
 public extension Decodable {
+    // MARK: 二进制转模型
     static func toModel(from data: Data?) -> Self? {
         guard let `data`: Data = data else { return nil }
         do {
@@ -171,6 +175,7 @@ public extension Decodable {
         }
     }
     
+    // MARK: 对象转模型
     static func toModel(from dictionary: [AnyHashable: Any]?) -> Self? {
         guard let `dictionary`: [AnyHashable: Any] = dictionary, let jsonData = try? JSONSerialization.data(withJSONObject: dictionary) else {
             return nil
@@ -183,6 +188,7 @@ public extension Decodable {
         }
     }
     
+    // MARK: 字符串转模型
     static func toModel(from string: String?) -> Self? {
         guard let `string`: String = string, let jsonData = string.data(using: .utf8) else {
             return nil
