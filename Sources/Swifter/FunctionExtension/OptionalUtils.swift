@@ -98,28 +98,28 @@ extension Optional {
         return try closure(unwrapped)
     }
 
-    func zip<A>(parameter0: Optional<A>) -> (Wrapped, A)? {
-        guard let a = self, let b = parameter0 else { return nil }
+    func zip<A>(value0: Optional<A>) -> (Wrapped, A)? {
+        guard let a = self, let b = value0 else { return nil }
         return (a, b)
     }
     
-    func zip<A, B>(parameter0: Optional<A>, parameter1: Optional<B>) -> (Wrapped, A, B)? {
-        guard let a = self, let b = parameter0, let c = parameter1 else { return nil }
+    func zip<A, B>(value0: Optional<A>, value1: Optional<B>) -> (Wrapped, A, B)? {
+        guard let a = self, let b = value0, let c = value1 else { return nil }
         return (a, b, c)
     }
     
-    func zip<A, B, C>(parameter0: Optional<A>, parameter1: Optional<B>, parameter2: Optional<C>) -> (Wrapped, A, B, C)? {
-        guard let a = self, let b = parameter0, let c = parameter1, let d = parameter2 else { return nil }
+    func zip<A, B, C>(value0: Optional<A>, value1: Optional<B>, value2: Optional<C>) -> (Wrapped, A, B, C)? {
+        guard let a = self, let b = value0, let c = value1, let d = value2 else { return nil }
         return (a, b, c, d)
     }
     
-    func zip<A, B, C, D>(parameter0: Optional<A>, parameter1: Optional<B>, parameter2: Optional<C>, parameter3: Optional<D>) -> (Wrapped, A, B, C, D)? {
-        guard let a = self, let b = parameter0, let c = parameter1, let d = parameter2, let e = parameter3 else { return nil }
+    func zip<A, B, C, D>(value0: Optional<A>, value1: Optional<B>, value2: Optional<C>, value3: Optional<D>) -> (Wrapped, A, B, C, D)? {
+        guard let a = self, let b = value0, let c = value1, let d = value2, let e = value3 else { return nil }
         return (a, b, c, d, e)
     }
     
-    func zip<A, B, C, D, E>(parameter0: Optional<A>, parameter1: Optional<B>, parameter2: Optional<C>, parameter3: Optional<D>, parameter4: Optional<E>) -> (Wrapped, A, B, C, D, E)? {
-        guard let a = self, let b = parameter0, let c = parameter1, let d = parameter2, let e = parameter3, let f = parameter4 else { return nil }
+    func zip<A, B, C, D, E>(value0: Optional<A>, value1: Optional<B>, value2: Optional<C>, value3: Optional<D>, value4: Optional<E>) -> (Wrapped, A, B, C, D, E)? {
+        guard let a = self, let b = value0, let c = value1, let d = value2, let e = value3, let f = value4 else { return nil }
         return (a, b, c, d, e, f)
     }
 }
@@ -167,13 +167,29 @@ public extension Optional where Wrapped: TypeInitialize {
         print(file, funcName, lineName)
         guard let value: Wrapped = self else {
             #if DEBUG
-            fatalError("强制拆包错误")
+            debugPrint("强制拆包错误")
             #else
             print("强制拆包错误 返回默认初始化值")
-            return Wrapped()
             #endif
+            return Wrapped()
         }
         return value
+    }
+}
+
+public extension Optional {
+    func or(_ other: Optional) -> Optional {
+        switch self {
+        case .none: return other
+        case .some: return self
+        }
+    }
+
+    func resolve(_ error: @autoclosure () -> Error) throws -> Wrapped {
+        switch self {
+        case .none: throw error()
+        case .some(let wrapped): return wrapped
+        }
     }
 }
 
